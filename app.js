@@ -11,7 +11,7 @@ var path = require('path');
 
 var mongo = require('mongodb');
 var monk = require('monk');
-var db = monk('localhost:27017/nodeTest1');
+var db = monk('localhost:27017/Wordcast');
 
 var app = express();
 
