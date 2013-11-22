@@ -1,0 +1,13 @@
+extends layout
+
+block content
+	h1= title
+	p Welcome to #{title}
+
+	a(href="listener")
+		| Listener
+
+	| &nbsp;|&nbsp;
+
+	a(href="viewer")
+		| Viewer
