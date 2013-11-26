@@ -10,6 +10,8 @@ var http = require('http');
 var path = require('path');
 
 var app = express();
+var server = http.createServer(app);
+var io = require("socket.io").listen(server);
 
 // all environments
 app.set('port', process.env.PORT || 3000);
@@ -42,6 +44,16 @@ app.get('/viewer', routes.viewer);
 /*
 	INIT
 */
-http.createServer(app).listen(app.get('port'), function(){
-  console.log('Express server listening on port ' + app.get('port'));
+server.listen(3000);
+
+/*
+	Socket.IO
+*/
+io.sockets.on('connection', function(socket) {
+
+	// Broadcast a new caption when one is received
+	socket.on("new caption", function(data){
+		socket.broadcast.emit("new caption", data);
+	});
+
 });

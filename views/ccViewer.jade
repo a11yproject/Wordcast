@@ -3,6 +3,9 @@ extends layout
 block content
 	article
 		h1= title
-		//TODO: obviously this
-		img(src="http://cdn.memegenerator.net/instances/500x/43228810.jpg")
+		div(id="cc")
+			span(id="cc-text")
+				| Caption text will go here
 
+	script(type="text/javascript", src="/socket.io/socket.io.js")
+	script(type="text/javascript", src="javascripts/viewer.js")
