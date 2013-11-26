@@ -1,0 +1,14 @@
+{
+  "name": "Wordcast",
+  "version": "0.0.1",
+  "description": "A real-time captioning service over Google Chrome and Socket.IO",
+  "private": true,
+  "scripts": {
+    "start": "node app.js"
+  },
+  "dependencies": {
+    "express": "latest",
+    "jade": "latest",
+    "socket.io": "latest"
+  }
+}

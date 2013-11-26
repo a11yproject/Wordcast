@@ -1,0 +1,29 @@
+extends layout
+
+block content
+	div(id="cc")
+		span(id="cc-button")
+			button(onclick="toggleSpeechRecognition(event)")
+				abbr(title="Closed Captioning") 
+					| CC
+				| Click to caption
+		span(id="cc-text", style="display: none;", onclick="toggleSpeechRecognition(event)")
+			| Begin speaking. Click to stop.
+
+
+	article
+		h1= title
+		ol
+			li 
+				| Open this page in Chrome desktop (25+)
+			li 
+				| Click button to begin captioning
+			li 
+				| Click button to begin captioning
+			li 
+				| Begin talking. May need to pause occasionaly
+			li 
+				| Click to caption stop
+
+	script(type="text/javascript", src="/socket.io/socket.io.js")
+	script(type="text/javascript", src="javascripts/cc.js")
