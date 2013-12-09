@@ -2,6 +2,13 @@
   "name": "Wordcast",
   "version": "0.0.1",
   "description": "A real-time captioning service over Google Chrome and Socket.IO",
+  "author": "A11yProject",
+  "contributors": [
+    {
+      "name": "Jordan Foreman",
+      "email": "me@jordanforeman.com"
+    }
+  ],
   "private": true,
   "scripts": {
     "start": "node app.js"

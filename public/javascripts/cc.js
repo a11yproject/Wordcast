@@ -1,6 +1,9 @@
 var cc = document.getElementById('cc-text');
 var button = document.getElementById('cc-button');
 
+var pathArray = window.location.pathname.split('/');
+var roomID = pathArray[2];
+
 var socket = io.connect("http://localhost:3000");
 
 var recognizing = false;

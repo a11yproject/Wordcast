@@ -26,6 +26,7 @@ app.use(express.cookieParser('your secret here'));
 app.use(express.session());
 app.use(app.router);
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.bodyParser());
 
 // development only
 if ('development' == app.get('env')) {
@@ -38,8 +39,14 @@ if ('development' == app.get('env')) {
 app.get('/', routes.index);
 
 /* Wordcast routes */
-app.get('/listener', routes.listener);
-app.get('/viewer', routes.viewer);
+
+//GET
+app.get('/listener/*', routes.listener);
+app.get('/viewer/*', routes.viewer);
+app.get('/createRoom', routes.createRoom);
+
+// POST
+app.post('/createNewRoom', routes.Action_createNewRoom);
 
 /*
 	INIT
@@ -56,4 +63,10 @@ io.sockets.on('connection', function(socket) {
 		socket.broadcast.emit("new caption", data);
 	});
 
+});
+
+var roomsArray = new Array();
+io.sockets.on('subscribe', function(data){
+	if( roomsArray.indexOf(data.room) == -1)
+		roomsArray.push(data.room);
 });
