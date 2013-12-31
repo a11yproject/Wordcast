@@ -56,17 +56,23 @@ server.listen(3000);
 /*
 	Socket.IO
 */
+var rooms = new Array();
 io.sockets.on('connection', function(socket) {
+
+	socket.on("join room", function(data){
+		socket.join(data)
+	});
+
+	socket.on("create room", function(data){
+		if (rooms.indexOf(data) < 0)
+			rooms.push(data);
+		else
+			socket.emit("create room error", "room already exists");
+	});
 
 	// Broadcast a new caption when one is received
 	socket.on("new caption", function(data){
-		socket.broadcast.emit("new caption", data);
+		socket.broadcast.to(data.room).emit("new caption", data.text);
 	});
 
-});
-
-var roomsArray = new Array();
-io.sockets.on('subscribe', function(data){
-	if( roomsArray.indexOf(data.room) == -1)
-		roomsArray.push(data.room);
 });

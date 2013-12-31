@@ -6,6 +6,10 @@ var roomID = pathArray[2];
 
 var socket = io.connect("http://localhost:3000");
 
+socket.on("connect", function(){
+  socket.emit("create room", roomID);
+});
+
 var recognizing = false;
 
 var recognition = new webkitSpeechRecognition();
@@ -25,7 +29,7 @@ recognition.onresult = function(event) {
   for (var i = event.resultIndex; i < event.results.length; ++i) {
     if(event.results[i][0].confidence > 0.4) {
       var captionText = capitalize(event.results[i][0].transcript);
-      socket.emit("new caption", captionText);
+      socket.emit("new caption", {text: captionText, room: roomID});
       cc.innerHTML = captionText;
     }
   }

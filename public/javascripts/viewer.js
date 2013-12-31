@@ -5,6 +5,10 @@ var roomID = pathArray[2];
 
 var caption = document.querySelector("#cc-text");
 
+socket.on("connect", function(){
+	socket.emit("join room", roomID);
+});
+
 socket.on("new caption", function(data){
 	caption.innerHTML = data;
 });
