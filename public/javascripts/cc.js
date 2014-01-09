@@ -5,9 +5,15 @@ var pathArray = window.location.pathname.split('/');
 var roomID = pathArray[2];
 
 var socket = io.connect("http://localhost:3000");
+var roomName = document.querySelector("#roomName");
 
 socket.on("connect", function(){
-  socket.emit("create room", roomID);
+  socket.emit("get room name", roomID);
+});
+
+socket.on("room name", function(data){
+  console.log("Room Name: " + data);
+  roomName.innerHTML = data;
 });
 
 var recognizing = false;

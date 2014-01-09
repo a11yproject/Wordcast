@@ -8,7 +8,7 @@ exports.index = function(req, res){
 };
 
 exports.listener = function(req, res){
-	res.render('listener', {title: "HTML5 Closed Captioning Listener"});
+	res.render('listener', {title: "Wordcast Room Name"});
 };
 
 exports.viewer = function(req, res){
@@ -17,13 +17,4 @@ exports.viewer = function(req, res){
 
 exports.createRoom = function(req, res){
 	res.render('createRoom', {title: "Create a new Wordcast Room"});
-};
-
-/*
-*	POST
-*/
-exports.Action_createNewRoom = function(req, res){
-	var GUID = Math.round(Math.random() * (99999 - 1) + 1);
-	var url = '/listener/' + GUID;
-	res.redirect(url);
 };
