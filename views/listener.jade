@@ -12,7 +12,7 @@ block content
 
 
 	article
-		h1(id="roomName")= title
+		h1(id="roomName", contenteditable)= title
 		ol
 			li 
 				| Open this page in Chrome desktop (25+)
@@ -25,5 +25,16 @@ block content
 			li 
 				| Click to caption stop
 
-	script(type="text/javascript", src="/socket.io/socket.io.js" async)
-	script(type="text/javascript", src="/javascripts/cc.js" async)
+	button(class='btn btn-default', onclick="dummyMsg('here is a message')")
+		| Send Msg
+
+	p
+		a(href='#')
+			i(class='icon-cog')
+
+		a(href='#')
+			i(class='icon-user-add')
+
+block scripts
+	script(type='text/javascript', src='/socket.io/socket.io.js', async)
+	script(type='text/javascript', src='/javascripts/listener.js', async)

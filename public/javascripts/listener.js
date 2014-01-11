@@ -3,21 +3,41 @@ var button = document.getElementById('cc-button');
 
 var pathArray = window.location.pathname.split('/');
 var roomID = pathArray[2];
-
-var socket = io.connect("http://localhost:3000");
 var roomName = document.querySelector("#roomName");
 
+//===========================
+//
+//  Socket
+//
+//===========================
+
+var socket = io.connect("http://localhost:3000");
+
+// Successfully connected to server
 socket.on("connect", function(){
-  socket.emit("get room name", roomID);
+  socket.emit("get room name", roomID); // get room by id
 });
 
+//  Get room name from server
 socket.on("room name", function(data){
   console.log("Room Name: " + data);
   roomName.innerHTML = data;
 });
 
-var recognizing = false;
+//TODO: more graceful error here
+// If page is loaded, but a room doesn't exist
+socket.on("no room exists", function(data){
+  console.log("no room exists");
+  window.location = '../';
+});
 
+//===========================
+//
+//  Voice Recognition
+//
+//===========================
+
+var recognizing = false;
 var recognition = new webkitSpeechRecognition();
 recognition.continuous = true;
 recognition.interimResults = true;
@@ -41,6 +61,12 @@ recognition.onresult = function(event) {
   }
 };
 
+//===========================
+//
+//  Util
+//
+//===========================
+
 function capitalize(s) {
   var first_char = /\S/;
  return s.replace(first_char, function(m) { 
@@ -59,4 +85,9 @@ function toggleSpeechRecognition(event) {
     button.style.display = "none";
     recognition.start();
   }
+}
+
+function dummyMsg(msg){
+  var messages = ["here is a caption", "The Lazy Brown Fox", "Wizards", "santa claws"];
+  socket.emit("new caption", {text: messages[Math.floor(Math.random()*messages.length)], room: roomID});
 }

@@ -1,3 +1,5 @@
+@import "fonts";
+
 /* Layout styling */
 html,
 body {
@@ -9,7 +11,8 @@ body {
   font-family: 'Ubuntu', sans-serif;
   line-height: 1.5;
   padding: 4em 1em 1em;
-  text-align: center;
+
+  padding-top: 70px;
 }
 
 ol {
@@ -22,11 +25,10 @@ li {
 
 /* Caption Styling */
 #cc {
+  display: block;
+  margin: 0 auto;
+
   text-align: center;
-  width: 80%;  
-  left: 10%;
-  position: fixed;
-  top: 1em;
 }
 
 #cc span {
@@ -60,4 +62,9 @@ li {
   font-size: 0.8em;
   display: inline-block;
   padding: 0 0.25em;
+}
+
+.btn-cta {
+  display: block;
+  margin: 0 auto;
 }

@@ -93,7 +93,10 @@ io.sockets.on('connection', function(socket) {
 
 		var room = getRoomById(data);
 		if (!room)
+		{
+			socket.emit("no room exists");
 			return;
+		}
 
 		socket.emit("room name", room.name);
 	}

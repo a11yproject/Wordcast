@@ -1,21 +1,31 @@
 {
-	"name": "Wordcast",
-	"version": "0.0.1",
-	"description": "A real-time captioning service over Google Chrome and Socket.IO",
-	"author": "A11yProject",
-	"contributors": [
-		{
-			"name": "Jordan Foreman",
-			"email": "me@jordanforeman.com"
-		}
-	],
-	"private": true,
-	"scripts": {
-		"start": "node app.js"
-	},
-	"dependencies": {
-		"express": "latest",
-		"jade": "latest",
-		"socket.io": "latest"
-	},
+  "name": "wordcast",
+  "version": "0.0.1",
+  "description": "A real-time captioning service over Google Chrome and Socket.IO",
+  "author": "A11yProject",
+  "contributors": [
+    {
+      "name": "Jordan Foreman",
+      "email": "me@jordanforeman.com"
+    }
+  ],
+  "private": true,
+  "scripts": {
+    "start": "node app.js"
+  },
+  "dependencies": {
+    "express": "latest",
+    "jade": "latest",
+    "socket.io": "latest"
+  },
+  "devDependencies": {
+    "grunt": "~0.4.1",
+    "grunt-contrib-sass": "~0.6.0",
+    "grunt-contrib-concat": "~0.3.0",
+    "grunt-contrib-uglify": "~0.2.7",
+    "grunt-contrib-imagemin": "~0.4.0",
+    "grunt-contrib-watch": "~0.5.3",
+    "grunt-curl": "~1.2.1",
+    "grunt-nodemon": "~0.1.2"
+  }
 }
