@@ -75,6 +75,15 @@ module.exports = function(grunt) {
 					}
 				}
 			}
+		},
+
+		concurrent: {
+			dev: {
+				tasks: ['watch', 'nodemon'],
+				options: {
+					logConcurrentOutput: true
+				}
+			}
 		}
 
 	});
@@ -85,9 +94,10 @@ module.exports = function(grunt) {
 	grunt.loadNpmTasks('grunt-contrib-watch');
 	grunt.loadNpmTasks('grunt-curl');
 	grunt.loadNpmTasks('grunt-nodemon');
+	grunt.loadNpmTasks('grunt-concurrent');
 
 	grunt.registerTask('default', ['concat', 'uglify', 'sass', 'imagemin', 'curl']);
 	grunt.registerTask('update', ['curl']);
-	grunt.registerTask('dev', ['watch']);
+	grunt.registerTask('dev', ['concurrent']);
 
 };
