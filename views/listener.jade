@@ -1,17 +1,22 @@
 extends layout
 
 block content
-	div(id="cc")
-		span(id="cc-button")
-			button(onclick="toggleSpeechRecognition(event)")
-				abbr(title="Closed Captioning") 
-					| CC
-				| Click to caption
-		span(id="cc-text", style="display: none;", onclick="toggleSpeechRecognition(event)")
-			| Begin speaking. Click to stop.
+	div(class="controls")
+		button(id='cc-toggle' class='btn-lg' onclick="toggleSpeechRecognition(event)")
+			i(class="icon-microphone") 
+
+		//-button(class='btn btn-default', onclick="dummyMsg('here is a message')")| Send Msg
+
+		a(href='#' class='btn')
+			i(class='icon-cog')
+			|  Settings
+
+		a(href='#' class='btn')
+			i(class='icon-user-add')
+			|  Invite
 
 
-	article
+	article(class='grid-1-2')
 		h1(id="roomName", contenteditable)= title
 		ol
 			li 
@@ -19,21 +24,14 @@ block content
 			li 
 				| Click button to begin captioning
 			li 
-				| Click button to begin captioning
-			li 
 				| Begin talking. May need to pause occasionaly
 			li 
-				| Click to caption stop
+				| Click button again to stop captioning
 
-	button(class='btn btn-default', onclick="dummyMsg('here is a message')")
-		| Send Msg
-
-	p
-		a(href='#')
-			i(class='icon-cog')
-
-		a(href='#')
-			i(class='icon-user-add')
+	div(class='grid-1-2')
+		h3
+			| Caption Log
+		ul(class='log-captions')
 
 block scripts
 	script(type='text/javascript', src='/socket.io/socket.io.js', async)

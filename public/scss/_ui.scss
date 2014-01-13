@@ -1,0 +1,79 @@
+.btn, button, input[type="submit"]
+{
+	display: inline;
+	width: auto;
+	margin-right: 5px;
+
+	background: WHITE;
+
+	padding: 10px 15px;
+
+	border: 2px solid $NAVY;
+	border-radius: 3px;
+
+	color: $NAVY;
+
+	text-align: center;
+	font-size: .9em;
+	text-decoration: none;
+
+	&:hover
+	{
+		background: $NAVY;
+		
+		color: WHITE;
+		text-shadow: 0 1px 1px $DARK_GRAY;
+
+		cursor: pointer;
+	}
+}
+
+.btn-lg
+{
+	padding: 20px 30px;
+}
+
+.jumbotron
+{
+	padding: 10px 20px;
+}
+
+.log-captions
+{
+	list-style-type: none;
+	padding: 0;
+	margin: 10px 0;
+
+	height: 300px;
+	overflow-y: scroll;
+
+	li
+	{
+		display: block;
+		padding: 2px 5px;
+
+		background: black;
+		color: WHITE;
+	}
+}
+
+#cc-toggle
+{
+	display: block;
+	margin: 0 auto;
+
+	text-align: center;
+
+	&:after
+	{
+		content: " Click to caption";
+	}
+
+	&.listening
+	{
+		&:after
+		{
+			content: " Click to stop";
+		}
+	}
+}

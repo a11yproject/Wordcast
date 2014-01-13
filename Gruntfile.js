@@ -52,18 +52,6 @@ module.exports = function(grunt) {
 			} 
 		},
 
-		curl: {
-			bootstrap_css: {
-				src: 'http://netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css',
-				dest: 'public/lib/bootstrap/css/bootstrap.min.css'
-			},
-
-			bootstrap_js: {
-				src: 'http://netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js',
-				dest: 'public/lib/bootstrap/js/bootstrap.min.js'
-			}
-		},
-
 		nodemon: {
 			dev: {
 				options: {
@@ -96,8 +84,7 @@ module.exports = function(grunt) {
 	grunt.loadNpmTasks('grunt-nodemon');
 	grunt.loadNpmTasks('grunt-concurrent');
 
-	grunt.registerTask('default', ['concat', 'uglify', 'sass', 'imagemin', 'curl']);
-	grunt.registerTask('update', ['curl']);
+	grunt.registerTask('default', ['concat', 'uglify', 'sass']);
 	grunt.registerTask('dev', ['concurrent']);
 
 };

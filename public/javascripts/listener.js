@@ -1,9 +1,10 @@
-var cc = document.getElementById('cc-text');
-var button = document.getElementById('cc-button');
+var button = document.getElementById('cc-toggle');
 
 var pathArray = window.location.pathname.split('/');
 var roomID = pathArray[2];
 var roomName = document.querySelector("#roomName");
+
+var captionLog = document.querySelector(".log-captions");
 
 //===========================
 //
@@ -56,7 +57,7 @@ recognition.onresult = function(event) {
     if(event.results[i][0].confidence > 0.4) {
       var captionText = capitalize(event.results[i][0].transcript);
       socket.emit("new caption", {text: captionText, room: roomID});
-      cc.innerHTML = captionText;
+      log(captionText);
     }
   }
 };
@@ -74,20 +75,25 @@ function capitalize(s) {
   }); 
 }
 
+function log(caption) {
+  captionLog.innerHTML += '<li>' + caption + '</li>';
+  captionLog.scrollTop = captionLog.scrollHeight;
+}
+
 function toggleSpeechRecognition(event) {
   if(recognizing) {
     recognition.stop();
-    cc.style.display = "none";
-    button.style.display = "inline-block";
+    button.classList.remove("listening");
     return;
   } else {
-    cc.style.display = "inline-block";
-    button.style.display = "none";
     recognition.start();
+    button.classList.add("listening");
   }
 }
 
 function dummyMsg(msg){
   var messages = ["here is a caption", "The Lazy Brown Fox", "Wizards", "santa claws"];
-  socket.emit("new caption", {text: messages[Math.floor(Math.random()*messages.length)], room: roomID});
+  var message = messages[Math.floor(Math.random()*messages.length)];
+  socket.emit("new caption", {text: message, room: roomID});
+  log(message);
 }
