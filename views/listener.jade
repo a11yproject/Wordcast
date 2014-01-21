@@ -12,7 +12,7 @@ block content
 
 
 	article
-		h1= title
+		h1(id="roomName")= title
 		ol
 			li 
 				| Open this page in Chrome desktop (25+)
@@ -25,5 +25,5 @@ block content
 			li 
 				| Click to caption stop
 
-	script(type="text/javascript", src="/socket.io/socket.io.js")
-	script(type="text/javascript", src="javascripts/cc.js")
+	script(type="text/javascript", src="/socket.io/socket.io.js" async)
+	script(type="text/javascript", src="/javascripts/cc.js" async)

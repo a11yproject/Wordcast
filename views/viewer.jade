@@ -2,10 +2,10 @@ extends layout
 
 block content
 	article
-		h1= title
+		h1(id="roomName")= title
 		div(id="cc")
 			span(id="cc-text")
 				| Caption text will go here
 
 	script(type="text/javascript", src="/socket.io/socket.io.js")
-	script(type="text/javascript", src="javascripts/viewer.js")
+	script(type="text/javascript", src="/javascripts/viewer.js")

@@ -8,9 +8,13 @@ exports.index = function(req, res){
 };
 
 exports.listener = function(req, res){
-	res.render('ccListener', {title: "HTML5 Closed Captioning Listener"});
+	res.render('listener', {title: "Wordcast Room Name"});
 };
 
 exports.viewer = function(req, res){
-	res.render('ccViewer', {title: "HTML5 Closed Captioning Viewer"});
+	res.render('viewer', {title: "HTML5 Closed Captioning Viewer"});
+};
+
+exports.createRoom = function(req, res){
+	res.render('createRoom', {title: "Create a new Wordcast Room"});
 };

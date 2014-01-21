@@ -1,7 +1,20 @@
 var cc = document.getElementById('cc-text');
 var button = document.getElementById('cc-button');
 
+var pathArray = window.location.pathname.split('/');
+var roomID = pathArray[2];
+
 var socket = io.connect("http://localhost:3000");
+var roomName = document.querySelector("#roomName");
+
+socket.on("connect", function(){
+  socket.emit("get room name", roomID);
+});
+
+socket.on("room name", function(data){
+  console.log("Room Name: " + data);
+  roomName.innerHTML = data;
+});
 
 var recognizing = false;
 
@@ -22,7 +35,7 @@ recognition.onresult = function(event) {
   for (var i = event.resultIndex; i < event.results.length; ++i) {
     if(event.results[i][0].confidence > 0.4) {
       var captionText = capitalize(event.results[i][0].transcript);
-      socket.emit("new caption", captionText);
+      socket.emit("new caption", {text: captionText, room: roomID});
       cc.innerHTML = captionText;
     }
   }

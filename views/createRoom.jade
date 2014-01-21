@@ -1,0 +1,9 @@
+extends layout
+
+block content
+	h1= title
+
+	form(action="createNewRoom", method="POST")
+		label Room Name
+			input(type="text" name="RoomName")
+		input(type="submit", value="Start Casting!")
