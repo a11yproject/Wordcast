@@ -3,7 +3,7 @@ extends layout
 block content
 	h1= title
 
-	form(action="createNewRoom", method="POST")
-		label Room Name
-			input(type="text" name="RoomName")
+	form(id="createNewRoom" action="createNewRoom", method="POST")
+		label
+			input(type="text" name="RoomName" placeholder="Room Name..")
 		input(type="submit", value="Start Casting!")

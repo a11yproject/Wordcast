@@ -1,17 +1,22 @@
 extends layout
 
 block content
-	h1= title
-	p Welcome to #{title}
+	div(class='jumbotron')
+		h1= title
+		p Welcome to #{title}! The best way to serve live captions! From classrooms to boardrooms, Wordcast delivers! Provide almost instant captions to listeners with just an internet connection.  
 
-	a(href="listener")
-		| Listener
+		p
+			| ...and its completely 
+			strong(style='color: red;')
+				| Free! 
 
-	| &nbsp;|&nbsp;
+			| But, 
 
-	a(href="viewer")
-		| Viewer
+			//- Open Source Definition 
+			a(href="http://bit.ly/1ixwz0C")
+				small
+					| why?
 
-	p
-		a(href="createRoom")
-			| Create New Room
+		p
+			a(class="btn btn-primary btn-lg" href="createRoom" role="button")
+				| Create Room (Free) 

@@ -1,0 +1,84 @@
+$NAV_HEIGHT: 60px;
+
+.navbar
+{
+	background: PINK;
+
+	padding: 0px 15px;
+
+	box-shadow: 0 2px 2px $DARK_GRAY;
+}
+
+.navbar-wordcast
+{
+	background: $NAVY;
+
+	a
+	{
+		color: WHITE;
+		text-decoration: none;
+	}
+}
+
+.navbar-fixed-top
+{
+	position: fixed;
+	top: 0;
+	left: 0; right: 0;
+
+	display: block;
+	height: $NAV_HEIGHT;
+}
+
+.navbar-toggle
+{
+	display: none;
+}
+
+.navbar-right
+{
+	float: right;
+}
+
+.navbar-brand
+{
+	line-height: $NAV_HEIGHT;
+
+	font-size: 1.3em;
+}
+
+.navbar-header
+{
+	float: left;
+}
+
+.nav
+{
+	margin: 0;
+	padding: 0;
+
+	line-height: $NAV_HEIGHT;
+
+	&.navbar-nav
+	{
+		list-style-type: none;
+
+		li
+		{
+			height: $NAV_HEIGHT;
+			display: inline-block;
+			line-height: $NAV_HEIGHT;
+
+			a
+			{
+				display: block;
+				padding: 0 10px;
+
+				&:hover
+				{
+					background: darken($NAVY, 5);
+				}
+			}
+		}
+	}
+}

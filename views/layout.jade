@@ -1,8 +1,37 @@
 doctype html
 html
-  head
-    title= title
-    link(rel='stylesheet', href='/stylesheets/style.css')
-    link(rel='stylesheet', href='/css/main.css')
-  body
-    block content
+	head
+		title= title
+		link(rel='stylesheet', href='/css/build/global.css')
+		script(type='text/javascript', src='http://code.jquery.com/jquery-1.10.2.min.js')
+	body
+
+		div(class='container')
+
+			header
+				nav(class='navbar navbar-fixed-top navbar-wordcast', role='navigation')
+					div(class='navbar-header',)
+						button(type='button', class="navbar-toggle", data-toggle="collapse", data-target="#bs-example-navbar-collapse-1")
+							span(class='sr-only')|Toggle navigation
+							span(class='icon-bar')
+							span(class='icon-bar')
+							span(class='icon-bar')
+						a(class='navbar-brand', href='/')|WordCast
+					div(class='collapse navbar-collapse', id='bs-example-navbar-collapse-1')
+						ul(class='nav navbar-nav navbar-right')
+							li
+								a(href='#')|Login
+							li
+								a(href='#')|Register
+
+			block content
+			footer
+				ul(class="nav")
+					li 
+						a(href='/') Home
+					li 
+						a(href='http://opensource.org/ToS') Terms
+					li 
+						a(href='http://github.com/a11yproject/WordCast') Contribute
+
+			block scripts
