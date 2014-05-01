@@ -14,7 +14,7 @@
     "start": "node app.js"
   },
   "dependencies": {
-    "express": "latest",
+    "express": "3.5.2",
     "jade": "latest",
     "socket.io": "latest"
   },
