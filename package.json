@@ -14,9 +14,12 @@
     "start": "node app.js"
   },
   "dependencies": {
-    "express": "3.5.2",
+    "express": "4.4.3",
+    "morgan": "~1.0.0",
+    "method-override": "~1.0.0",
+    "body-parser": "~1.0.0",
     "jade": "latest",
-    "socket.io": "latest"
+    "socket.io": "~1.0.0"
   },
   "devDependencies": {
     "grunt": "~0.4.1",

@@ -3,40 +3,29 @@
  * Module dependencies.
  */
 
-var express = require('express');
-var routes = require('./routes');
-var user = require('./routes/user');
-var http = require('http');
-var path = require('path');
+var express 			= require('express'),
+	morgan 				= require('morgan'),
+	bodyParser 			= require('body-parser'),
+	methodOverride 		= require('method-override'),
+	app 				= express(),
+	server 				= require('http').Server(app),
+	io 					= require('socket.io')(server);
 
-var app = express();
-var server = http.createServer(app);
-var io = require("socket.io").listen(server);
-
-// all environments
-app.set('port', process.env.PORT || 3000);
-app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'jade');
-app.use(express.favicon());
-app.use(express.logger('dev'));
-app.use(express.json());
-app.use(express.urlencoded());
-app.use(express.methodOverride());
-app.use(express.cookieParser('your secret here'));
-app.use(express.session());
-app.use(app.router);
-app.use(express.static(path.join(__dirname, 'public')));
-app.use(express.bodyParser());
-
-// development only
-if ('development' == app.get('env')) {
-  app.use(express.errorHandler());
-}
+app.use(express.static(__dirname + '/public'));
+app.use(morgan('dev'));
+app.use(bodyParser());
+app.use(methodOverride());
 
 /*
 	ROUTES
 */
+var roomController = require('./controllers/Room');
+app.use('/room', roomController);
+
+
 app.get('/', routes.index);
+var routes = require('./routes');
+var user = require('./routes/user');
 
 /* Wordcast routes */
 
