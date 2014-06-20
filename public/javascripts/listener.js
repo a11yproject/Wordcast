@@ -1,7 +1,7 @@
 var button = document.getElementById('cc-toggle');
 
 var pathArray = window.location.pathname.split('/');
-var roomID = pathArray[2];
+var roomID = pathArray[3];
 var roomName = document.querySelector("#roomName");
 
 var captionLog = document.querySelector(".log-captions");
@@ -29,7 +29,7 @@ socket.on("room name", function(data){
 // If page is loaded, but a room doesn't exist
 socket.on("no room exists", function(data){
   console.log("no room exists");
-  window.location = '../';
+  //window.location = '../';
 });
 
 //===========================
