@@ -4,23 +4,6 @@ module.exports = function(grunt) {
 
 		pkg: grunt.file.readJSON('package.json'),
 
-		concat: {
-			dist: {
-				src: [
-					'pubic/javascripts/libs/*.js',
-					'public/javascripts/*.js'
-				],
-				dest: 'public/javascripts/build/production.js',
-			}
-		},
-
-		uglify: {
-			build: {
-				src: 'public/javascripts/build/production.js',
-				dest: 'public/javascripts/build/production.min.js'
-			}
-		},
-
 		sass: {
 			dist: {
 				options: {
@@ -33,15 +16,6 @@ module.exports = function(grunt) {
 		},
 
 		watch: {
-			scripts: {
-				files: ['public/javascripts/*.js', 'public/javascripts/libs/*.js'],
-				tasks: ['concat', 'uglify'],
-				options: {
-					spawn: false,
-					livereload: true,
-				},
-			},
-
 			css: {
 				files: ['public/scss/*.scss'],
 				tasks: ['sass'],
@@ -54,9 +28,10 @@ module.exports = function(grunt) {
 
 		nodemon: {
 			dev: {
+				script: 'server.js',
 				options: {
-					file: 'app.js',
-					watchedFolders: ['routes'],
+					file: 'server.js',
+					watchedFolders: ['Components', 'Config'],
 					nodeArgs: ['--debug'],
 					env: {
 						PORT: '3000'
@@ -76,15 +51,12 @@ module.exports = function(grunt) {
 
 	});
 
-	grunt.loadNpmTasks('grunt-contrib-concat');
-	grunt.loadNpmTasks('grunt-contrib-uglify');
 	grunt.loadNpmTasks('grunt-contrib-sass');
 	grunt.loadNpmTasks('grunt-contrib-watch');
-	grunt.loadNpmTasks('grunt-curl');
 	grunt.loadNpmTasks('grunt-nodemon');
 	grunt.loadNpmTasks('grunt-concurrent');
 
-	grunt.registerTask('default', ['concat', 'uglify', 'sass']);
+	grunt.registerTask('default', ['sass']);
 	grunt.registerTask('dev', ['concurrent']);
 
 };
