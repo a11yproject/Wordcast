@@ -20,7 +20,7 @@ var Socket = function(io) {
 	};
 
 	var newCaptionHandler = function(data) {
-		sock.broadcast.to(data.room).emit("new caption", data.text);
+		io.sockets.in(data.room).emit("new caption", data.text);
 	};
 
 	var getRoomNameHandler = function(data) {
