@@ -23,14 +23,7 @@ Room.prototype.isOwner = function(user) {
 };
 
 Room.prototype.getUrl = function() {
-
-	// TODO: this should be config based
-	if (process.env.NODE_ENV == "production")
-		URL = "http://wordcast.io/room/ID/" + this.ID;
-	else
-		URL = "http://localhost:3000/room/ID/" + this.ID;
-
-	return URL;
+	return "/room/ID/" + this.ID;
 };
 
 module.exports = Room;

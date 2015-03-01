@@ -1,9 +1,9 @@
-var button = document.getElementById('cc-toggle');
-
+var socketPath = window.location.protocol + "//" + window.location.host;
 var pathArray = window.location.pathname.split('/');
 var roomID = pathArray[3];
 var roomName = document.querySelector("#roomName");
 
+var button = document.getElementById('cc-toggle');
 var captionLog = document.querySelector(".log-captions");
 
 //===========================
@@ -12,7 +12,7 @@ var captionLog = document.querySelector(".log-captions");
 //
 //===========================
 
-var socket = io.connect("http://localhost:3000");
+var socket = io.connect(socketPath);
 
 // Successfully connected to server
 socket.on("connect", function(){
