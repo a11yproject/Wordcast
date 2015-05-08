@@ -38,23 +38,15 @@
 	padding: 10px 20px;
 }
 
-.log-captions
-{
-	list-style-type: none;
-	padding: 0;
-	margin: 10px 0;
+.log-captions {
+	border: 1px solid $DARK_GRAY;
+	padding: 10px;
+	text-align: center;
 
-	height: 300px;
-	overflow-y: scroll;
+	min-height: 300px;
 
-	li
-	{
-		display: block;
-		padding: 2px 5px;
-
-		background: black;
-		color: WHITE;
-	}
+	font-size: 2em;
+	color: $DARK_GRAY;
 }
 
 #cc-toggle

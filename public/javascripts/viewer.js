@@ -37,6 +37,5 @@ socket.on("room name", function(data){
 //===========================
 
 function log(caption) {
-  captionLog.innerHTML += '<li>' + caption + '</li>';
-  captionLog.scrollTop = captionLog.scrollHeight;
+  captionLog.innerHTML = caption;
 }
