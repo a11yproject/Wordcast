@@ -76,8 +76,7 @@ function capitalize(s) {
 }
 
 function log(caption) {
-  captionLog.innerHTML += '<li>' + caption + '</li>';
-  captionLog.scrollTop = captionLog.scrollHeight;
+  captionLog.innerHTML = caption;
 }
 
 function toggleSpeechRecognition(event) {
